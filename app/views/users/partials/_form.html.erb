@@ -1,0 +1,29 @@
+<% if @user.errors.any? %>
+    <div id="error-explanation" >
+        <div class="alert aler-danger">
+            <p>The form contains <%= pluralize(@user.errors.count, "error")%>. </p>
+        </div>
+        <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
+
+
+<%= form_for(@user, url: yield(:submit_path)) do |f| %>
+    <%= f.label(:username) %>
+    <%= f.text_field(:username) %>
+
+    <%= f.label(:email) %>
+    <%= f.email_field(:email) %>
+
+    <%= f.label(:password) %>
+    <%= f.password_field(:password) %>
+
+    <%= f.label(:password_confirmation, "Confirmation Password") %>
+    <%= f.password_field(:password_confirmation) %>
+
+    <%= f.submit(yield(:button_text)) %>
+<% end %>
