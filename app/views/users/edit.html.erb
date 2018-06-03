@@ -1,2 +1,6 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<% provide(:title, "Edit profile") %>
+<% provide(:submit_path, edit_user_path(@user) )%>
+<% provide(:button_text, "Submit change" )%>
+
+<h1>Edit Profile</h1>
+<%= render partial: "users/partials/form" %>
